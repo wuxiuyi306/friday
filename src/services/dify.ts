@@ -67,7 +67,7 @@ export async function sendMessage(
     }
 
     const reader = response.body.getReader();
-    const decoder = new TextDecoder('utf-8');
+    const decoder = new TextDecoder();
     let fullMessage = '';
 
     try {

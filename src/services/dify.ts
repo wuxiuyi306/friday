@@ -100,8 +100,8 @@ export async function sendMessage(
           }
         }
       }
-    } catch (error) {
-      if (error.name === 'AbortError') {
+    } catch (error: any) {
+      if (error?.name === 'AbortError') {
         return { message: fullMessage + '\n[回答已停止]' };
       }
       reader.cancel();
@@ -111,8 +111,8 @@ export async function sendMessage(
     return {
       message: fullMessage || '抱歉，我没有理解您的问题。',
     };
-  } catch (error) {
-    if (error.name === 'AbortError') {
+  } catch (error: unknown) {
+    if (error instanceof Error && error.name === 'AbortError') {
       return { message: '[回答已停止]' };
     }
     console.error('Error in sendMessage:', error);

@@ -95,6 +95,7 @@ export async function sendMessage(
                 throw new Error(data.message || 'Stream error');
               }
             } catch {
+              // Ignore JSON parse errors
               console.warn('Failed to parse streaming data:', line);
             }
           }

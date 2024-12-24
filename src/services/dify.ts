@@ -67,7 +67,7 @@ export async function sendMessage(
     }
 
     const reader = response.body.getReader();
-    const decoder = new TextDecoder();
+    const decoder = new TextDecoder('utf-8');
     let fullMessage = '';
 
     try {
@@ -94,7 +94,7 @@ export async function sendMessage(
               } else if (data.event === 'error') {
                 throw new Error(data.message || 'Stream error');
               }
-            } catch (_) {
+            } catch {
               console.warn('Failed to parse streaming data:', line);
             }
           }

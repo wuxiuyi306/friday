@@ -94,7 +94,7 @@ export async function sendMessage(
               } else if (data.event === 'error') {
                 throw new Error(data.message || 'Stream error');
               }
-            } catch {
+            } catch (error) {
               console.warn('Failed to parse streaming data:', line);
             }
           }
